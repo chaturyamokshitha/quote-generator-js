@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quotegenerator</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="bg-blue-300 italic">
+    <div class="flex justify-center items-center">
+
+    <div class="bg-white flex  flex-col text-center mt-56 ml-2 mr-2 rounded-md p-8 max-w-96 ">
+        <h1 class="text-2xl line-under font-bold">Quote of the day</h1>
+        <blockquote  class="mt-6 text-xl font-semibold " id="quotable">"Loading.."</blockquote>
+        <span class="relative top-10 left-16 mb-20 " id="author">Loading..</span>
+        <div >
+            <button class="bg-blue-400 h-8 w-20 text-white rounded-md italic hover:bg-blue-600" id="quote">Quote</button>
+            <button class="bg-blue-400 h-8 w-20 text-white rounded-md italic" id="tweet">Twitt</button>
+        </div>
+    </div>
+    </div>
+   <script>
+    const api_url = "https://api.quotable.io/random";
+        const q = document.getElementById("quotable");
+        const auth = document.getElementById("author");
+        async function quote(url) {
+            const response = await fetch(url);
+            var data = await response.json();
+
+            q.innerHTML = data.content;
+            auth.innerHTML = data.author;
+        }
+        function tweet() {
+            window.open("https://twitter.com/intent/tweet?text=Hello%20world");
+        }
+        const quoteg = document.getElementById("quote");
+        quoteg.addEventListener("click", () => {
+            quote(api_url);
+        });
+        const tweetg = document.getElementById("tweet");
+        tweetg.addEventListener("click", () => {
+            tweet();
+        });
+
+   </script>
+</body>
+</html>

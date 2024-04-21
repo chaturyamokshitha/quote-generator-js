@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ .line-under::after {
+     content: '';
+     display: block;
+     width: 50%;
+     height: 2px;
+ margin-left:9rem;
+     background-color: blue;
+     margin-top: 4px;
+     /* Adjust as needed */
+ }
+ 
